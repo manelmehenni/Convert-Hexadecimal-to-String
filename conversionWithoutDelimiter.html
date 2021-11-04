@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=chrome,edge=1">
+<meta name="HandheldFriendly" content="true">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+    <title>Conversion</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+</head>
+
+<body>
+
+
+  <style type="text/css">
+
+@font-face { font-family: 'Material Icons'; font-style: normal; font-weight: 400; src: url(https://fonts.gstatic.com/s/materialicons/v98/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2'); font-display: block; } .material-icons { font-family: 'Material Icons'; font-weight: normal; font-style: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; } /* Ends Material Icons CSS */
+
+  #all::-webkit-scrollbar {
+  display: none; 
+}
+
+#all {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+}
+
+    #all{
+      
+      overflow-wrap: all;
+      background-color: rgba(219, 217, 255, 0.5) ;
+      position: relative ;
+      left: 240px;
+      top: 10px;
+      bottom: 5px;
+      width: 500px;
+      height: 600px;
+      margin-bottom: 10px;
+      display: block;
+  
+    }
+   
+    #labInput{
+      position: relative;
+      top: 20px;
+      left: 30px;
+      color: black;
+      display: inline-block;
+      background-color: transparent; 
+      border:2px solid #1A98B8 !important;
+      border-radius: 10px;
+      padding: 12px 12px;
+      cursor: pointer;
+      font-weight: bold;
+
+    }
+
+   #reset{
+      position: relative;
+      top : 20px;
+      left: 80px;
+      color: black;
+      display: inline-block;
+      background-color: transparent;
+      border:2px solid #1A98B8 !important;
+      border-radius: 10px; 
+      padding: 12px 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    
+
+    #content-target{
+      position: relative;
+      top: 60px;
+      left: 30px;
+      
+    }
+
+     #content-target2{
+      position: relative;
+      top:65px;
+      left: 30px;
+      margin-bottom: 30px;
+      
+     
+      
+    }
+    textarea:focus{
+     outline-color: #1A98B8;
+     box-shadow: 0 0 10px #719ECE;
+    }
+
+    textarea{
+
+      height: 23%;
+      width: 85%;
+      overflow-y: hidden;  
+      
+      
+    }
+
+   
+
+  @media (hover: hover) {
+    #save:hover {
+        background-color: #0F5769;
+        color: white;
+       border-radius: 28px;
+      border: 1px #ccc;
+      
+      padding: 10px 10px;
+    }
+
+     #convert:hover,
+    #convert:active {
+      background-color : #0F5769;
+
+    }
+
+    #reset:hover,
+    #reset:active {
+      background-color : #0F5769;
+      color: white;
+    }
+}
+
+    #labInput:hover,
+    #labInput:focus {
+      background-color : #0F5769;
+      color: white;
+    }
+
+     #copy:hover,
+     #copy:focus {
+       background-color : #0F5769;
+       color: white;
+       border-radius: 28px;
+      border: 1px #ccc;
+      
+      padding: 10px 10px;
+    }
+
+     
+    #convert{
+      
+      position:   relative  ;
+      top : 40px;
+      left: 30px;
+     letter-spacing: .15rem;
+      color: white;
+      background-color: #1A98B8;
+      border-radius: 12px;
+      border: 1px #ccc;
+      display: inline-block;
+      padding: 18px 31px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #save{
+      position:   relative  ;
+      top : 140px;
+      left: 150px;
+      display: inline-block;
+      color: black;
+      background-color: transparent;
+      border-style: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+
+    #copy{
+      position:   relative  ;
+      top : 140px;
+      left: 150px;
+      color: black;
+      display: inline-block;
+      cursor: pointer;
+      font-weight: bold;
+      background-color: transparent;
+      border-style: none;
+    }
+
+
+
+
+
+    #t1 {
+      position: absolute;
+      top: 80px;
+      left: 30px;
+      font-weight: bold;
+
+    }
+    #t2 {
+      position: relative;
+      display: flex;
+      top:75px;
+      left: 30px;
+      font-weight: bold;
+
+    }
+@media (min-width: 1281) and (max-width: 1920px) {
+  
+  #all{
+      
+      overflow: auto;
+      background-color: rgba(219, 217, 255, 0.5) ;
+      position: relative ;
+      left: 240px;
+      top: 10px;
+      bottom: 5px;
+      width: 500px;
+      height: 600px;
+      margin-bottom: 10px;
+    }
+   
+    textarea{
+
+     
+      width: 85%;
+      
+    }
+
+      #save{
+      position: relative;
+      left : 150px;
+
+    }
+    #copy{
+      position: relative;
+      left : 150px;
+
+    }
+   
+
+    #content-target2{
+      position: relative;
+      top:55px;
+      left: 30px;
+      margin-bottom: 40px;
+      
+     
+      
+    }
+     
+    #convert{
+      position: relative;
+      top: 20px;
+    }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+#all{
+      
+      overflow: auto;
+      background-color: rgba(219, 217, 255, 0.5) ;
+      position: relative ;
+      left: 240px;
+      top: 10px;
+      bottom: 5px;
+      width: 500px;
+      height: 600px;
+      margin-bottom: 10px;
+    }
+
+
+    textarea{
+
+      height: 26%;
+      width: 85%;
+      
+    }
+   
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+   #all{
+      overflow: auto;
+      
+      width: 500px;
+      
+      position: relative;
+      left: 120px;
+      
+      
+    }
+
+     textarea{
+      
+      width: 90%;
+    }
+  
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  #all{
+      overflow: auto;
+      
+      width: auto;
+      margin-left: 0;
+      position: relative;
+      left: 0px;
+      
+    }
+
+     textarea{
+      
+      width: 90%;
+    }
+  
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px ) and (max-width: 480px) {
+  
+      #all { width:100%;
+      margin-left: 0;
+      position: relative;
+      left: 0px;
+      font-size: 3.7vw; }
+    textarea { width:90%;  }
+    #save{
+      position: relative;
+      left : 140px;
+
+    }
+    #copy{
+      position: relative;
+      left : 150px;
+
+    }
+    
+}
+
+  
+
+
+
+ 
+  
+  </style>
+
+<div id="all">
+<div id="conv">
+<label id="labInput" for="input-file"><i class="fas fa-file"></i> Upload file </label>
+ <input type="file" id="input-file" accept=".txt" hidden>
+
+ <button id="reset"onclick="OnReset()"><i class="fas fa-times"></i>&nbsp;Reset</button>
+</div>
+
+<p id="t1"> Paste text here or upload data using file </p>
+
+<textarea id="content-target"></textarea>
+<div class="container">
+     <div class="text-center">
+
+        <button type = "button " id="copy" title="Copy"onclick="OnCopy()"><i class="far fa-copy fa-lg"></i>&nbsp;Copy</button>
+        <button type = "button " id="save" title="Save" onclick="OnSave()"><i class="fas fa-download fa-lg"></i>&nbsp;Save</button>
+
+        <div id="delimiter" style="display: none;">
+          <input  id="radioDel" type="checkbox">
+          <label id="">Add delimiter</label>
+        </div>
+
+</div>
+<button type = "button " id="convert" onclick="conversion()">Convert</button>
+</div>
+
+<p id="t2"> Output data </p>
+<textarea id="content-target2" readonly></textarea>
+
+</div>
+
+  <script>
+    document.getElementById('input-file')
+  .addEventListener('change', getFile)
+
+function getFile(event) {
+  const input = event.target
+  
+  if ('files' in input && input.files.length > 0) {
+    placeFileContent(
+      document.getElementById('content-target'),
+      input.files[0])
+    
+  }
+}
+
+function placeFileContent(target, file) {
+  readFileContent(file).then(content => {
+    target.value = content
+    console.log(content)
+  }).catch(error => console.log(error))
+}
+
+function readFileContent(file) {
+  const reader = new FileReader()
+  return new Promise((resolve, reject) => {
+    reader.onload = event => resolve(event.target.result)
+    reader.onerror = error => reject(error)
+    reader.readAsText(file)
+
+  })
+}
+
+
+    function conversion(){
+  const message = document.getElementById('content-target').value ;
+  
+  const message2 = document.getElementById('content-target2');
+  console.log(message);
+  var del= " ";
+  var txt=$("#content-target").val();
+  var hex=""
+  if (radioDel.checked == true){
+      
+      if( txt.length==0 ) return;
+      for(var i=0; i<txt.length; i++)
+             {
+                //var a = txt.charCodeAt(i);
+                var a = txt.codePointAt(i);
+                var h = a.toString(16);
+                if( h.length==1 ) h='0'+h;
+                hex += h;
+                //if( i<txt.length-1) hex+=del;
+                hex+=del;
+                if( h.length>4 ) i++;
+             }
+
+      if( hex[hex.length-1]==del ) hex=hex.substring(0,hex.length-1);
+      document.getElementById("content-target2").value = hex;
+      var result = '';
+
+      if (message !== ''){
+        for (var i=0; i<message.length; i++) {
+          hex += message.charCodeAt(i).toString(16);
+        }
+        console.log(hex)
+        message2.textContent = hex;
+        return hex;
+
+      }
+  }
+
+  if (radioDel.checked == false) {
+    if (message !== ''){
+        for (var i=0; i<message.length; i++) {
+          hex += message.charCodeAt(i).toString(16);
+        }
+        console.log(hex)
+        document.getElementById("content-target2").value = hex;
+        message2.textContent = hex;
+        return hex;
+  }
+
+
+}
+}
+    
+
+
+ function OnReset(){
+  document.getElementById('content-target').value = '' ;
+ document.getElementById('content-target2').value = '' ;
+ document.getElementById('radioDel').checked = false;
+
+ 
+ 
+}
+
+function OnSave()
+   {
+      //var file=$("#file").val();
+      //if( file=="" ) file="file.txt";
+      fileSave("hex-output.txt");
+   }
+
+function fileSave(filename)
+   {
+      var txt=$("#content-target2").val();
+      if( txt=="" ) return;
+      var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, filename);
+   }
+
+ function OnCopy()
+   {
+      $("#content-target2").select();
+      document.execCommand("copy");
+   }
+
+
+
+
+
+
+  </script>
+
+
+</body>
+
+</html>
+
+
+
